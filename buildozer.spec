@@ -5,7 +5,7 @@ package.domain = com.snc
 source.dir = .
 source.include_exts = py,png,jpg,jpeg,ttf,otf,txt
 version = 1.0.0
-requirements = python3,kivy,pillow,plyer,pyjnius
+requirements = python3,kivy,pillow,plyer,pyjnius,charset_normalizer==2.1.1,idna,urllib3,certifi
 orientation = portrait
 fullscreen = 0
 
