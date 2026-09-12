@@ -47,7 +47,19 @@ jobs:
 
       - name: Build APK with Buildozer
         run: |
-          yes | buildozer android debug
+          set +e
+          for attempt in 1 2 3; do
+            echo "Build attempt $attempt..."
+            yes | buildozer android debug 2>&1
+            if [ $? -eq 0 ]; then
+              exit 0
+            fi
+            if [ $attempt -lt 3 ]; then
+              echo "Build failed, waiting before retry..."
+              sleep 60
+            fi
+          done
+          exit 1
 
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
