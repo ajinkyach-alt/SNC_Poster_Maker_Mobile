@@ -30,7 +30,16 @@ jobs:
             zlib1g-dev libncurses-dev \
             cmake libffi-dev libssl-dev \
             build-essential ccache automake
-
+      - name: Pre-download freetype (with retries)
+        run: |
+          mkdir -p ~/.buildozer/android/packages/freetype
+          for i in 1 2 3 4 5 6 7 8; do
+            curl -L --fail --retry 6 --retry-delay 10 --retry-connrefused \
+              -o ~/.buildozer/android/packages/freetype/freetype-2.14.1.tar.gz \
+              https://download.savannah.gnu.org/releases/freetype/freetype-2.14.1.tar.gz && break
+            echo "Attempt $i failed, waiting 20s..."
+            sleep 20
+          done
       - name: Install buildozer & cython
         run: |
           pip install --upgrade pip
