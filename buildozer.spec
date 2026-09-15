@@ -10,10 +10,10 @@ orientation = portrait
 fullscreen = 0
 
 # Android
-android.api = 35
+android.api = 34
 android.minapi = 24
 android.archs = arm64-v8a,armeabi-v7a
-android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
+android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE,READ_MEDIA_IMAGES
 android.accept_sdk_license = True
 
 # Build settings
@@ -22,4 +22,3 @@ p4a.bootstrap = sdl2
 [buildozer]
 log_level = 2
 warn_on_root = 1
-requirements = Cython==0.29.36,buildozer==1.5.0,python-for-android==2024.0.1
