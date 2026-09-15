@@ -25,7 +25,7 @@ except Exception:
 from poster_generator import generate_poster
 
 BASE = Path(__file__).parent
-OUT_DIR = Path(App.user_data_dir if 'App' in globals() else BASE) / 'outputs'
+OUT_DIR = BASE / 'outputs'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -101,6 +101,10 @@ class VegRow(BoxLayout):
 
 class SNCApp(App):
     def build(self):
+        global OUT_DIR
+        OUT_DIR = Path(self.user_data_dir) / 'outputs'
+        OUT_DIR.mkdir(parents=True, exist_ok=True)
+
         self.title = 'SNC शेतकरी बाजार'
         Window.clearcolor = (0.95, 0.98, 0.94, 1)
 
